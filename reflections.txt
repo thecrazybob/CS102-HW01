@@ -1,0 +1,12 @@
+CS102 - Section #3
+Mohammed Sohail 22001513
+14th February 2021
+A few hours (a more accurate time frame can be seen through my Git commits)
+Should be "working"
+
+## Log
+- Created a new Java project using VSCode
+- Renamed the automatically created App class to HangmanTester and created a new class called HangmanTester
+- Downloaded the pieces of code provided and selected the options with efficient programming usage and better comments
+- Copied and pasted the selected options into the new "Hangman" class.
+- Refactored the code and comments (specifically focused on harmony throughout the code - code and comment styling)

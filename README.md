@@ -1,7 +1,10 @@
-## Getting Started
+## CS102 Homework 01 2020-21 Spring Semester
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This repository contains HW02 for CS102 course. This is my attempt to get the provided pieces together.
 
+## Reflections
+
+As mentioned in the instructions, all the reflections are stored in reflections.txt file.
 ## Folder Structure
 
 The workspace contains two folders by default, where:
