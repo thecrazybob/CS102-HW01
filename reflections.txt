@@ -10,3 +10,5 @@ Should be "working"
 - Downloaded the pieces of code provided and selected the options with efficient programming usage and better comments
 - Copied and pasted the selected options into the new "Hangman" class.
 - Refactored the code and comments (specifically focused on harmony throughout the code - code and comment styling)
+- Go through the code in both classes and see if anything is missing.
+- Fix and errors reported by the IDE.

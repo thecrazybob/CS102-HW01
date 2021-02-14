@@ -1,24 +1,23 @@
 public class Hangman {
 
     // properties
-    private StringBuffer secretWord;
-    private StringBuffer allLetters;
-    private StringBuffer usedLetters;
-    private int numberOfIncorrectTries;
-    private int maxAllowedIncorrectTries;
-    private StringBuffer knownSoFar;
+    public String secretWord;
+    public StringBuffer allLetters;
+    public StringBuffer usedLetters;
+    public int numberOfIncorrectTries;
+    public int maxAllowedIncorrectTries;
+    public StringBuffer knownSoFar;
 
     // constructor
-    public Hangman() 
-    {
+    public Hangman() {
 
         // this method will initialize the variable secretWord
         chooseSecretWord();
 
         // initialize properties
-        allLetters = new StringBuffer("abcdefghijklmnopqrstuvwxyz");
+        allLetters = new StringBuffer("ABCDEFGHIJKLMNOQRSTUVWXYZ");
         usedLetters = new StringBuffer("");
-        numberOfIncorrectTries= 0;
+        numberOfIncorrectTries = 0;
         maxAllowedIncorrectTries = 6;
         knownSoFar = new StringBuffer("");
         
@@ -72,9 +71,10 @@ public class Hangman {
      * Chooses a random word from the list
      * @return the chosen word
      */
-    public String chooseSecretWord()
-    {
-        String[] words = { "bird", "cat", "computer", "java", "Davenport" }; // Some random words
+    public String chooseSecretWord() {
+
+        // Some random words
+        String[] words = { "bird", "cat", "computer", "java", "david" };
         int index;
         String chosenWord;
         
@@ -83,16 +83,19 @@ public class Hangman {
         
         // Getting the word from the array at that index
         chosenWord = words[index];
-        
+
+        // Assign the word to the global property
+        this.secretWord = chosenWord;
+
         return chosenWord;
+
     }
 
     /**
      * Get all letters of the secret word.
      * @return is all letters of the secret word.
      */
-    public String getAllLetters ()
-    {
+    public String getAllLetters () {
         return allLetters.toString();
     }
     
@@ -100,8 +103,7 @@ public class Hangman {
      * Get used letter which is used by user.
      * @return is used letter which is used by user.
      */
-    public String getUsedLetters ()
-    {
+    public String getUsedLetters () {
         return usedLetters.toString();
     }
     
@@ -109,8 +111,7 @@ public class Hangman {
      * Get numbers of incorrect tries.
      * @return is numbers of incorrect tries.
      */
-    public int getNumOfIncorrectTries ()
-    {
+    public int getNumOfIncorrectTries () {
         return numberOfIncorrectTries;
     }
     
@@ -118,8 +119,7 @@ public class Hangman {
      * Get max allowed incorrect rights.
      * @return is max allowed incorrect rights.
      */
-    public int getMaxAllowedIncorrectTries ()
-    {
+    public int getMaxAllowedIncorrectTries () {
         return maxAllowedIncorrectTries;
     }
     
@@ -127,8 +127,7 @@ public class Hangman {
      * Get known letters so far.
      * @return is known letters so far.
      */
-    public String getKnownSoFar ()
-    {
+    public String getKnownSoFar () {
         return knownSoFar.toString();
     }
     
@@ -136,8 +135,7 @@ public class Hangman {
      * Show whether the game is won or not.
      * @return indicates whether the game is won or not.
      */
-    public boolean hasLost ()
-    {
+    public boolean hasLost () {
         if (numberOfIncorrectTries == maxAllowedIncorrectTries)
         {
             return true;
@@ -149,8 +147,7 @@ public class Hangman {
      * Show if the game is over or not.
      * @return shows if the game is over or not.
      */
-    public boolean isGameOver ()
-    {
+    public boolean isGameOver () {
         return hasLost() || (allLetters == usedLetters);
     }
 
