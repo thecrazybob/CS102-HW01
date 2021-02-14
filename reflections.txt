@@ -1,7 +1,7 @@
 CS102 - Section #3
 Mohammed Sohail 22001513
 14th February 2021
-A few hours (a more accurate time frame can be seen through my Git commits)
+Took a total of 1 hour and 45 minutes (a more accurate time frame can be seen through my Git commits)
 Should be "working"
 
 ## Log
@@ -15,5 +15,6 @@ Should be "working"
 - Changed the "chooseSecretWord()" method to private
 - The tryThis() method was comparing lowercase alphabets to uppercase so I matched the cases as well
 - Implemented check inside tryThis() method for isGameOver()
+- The secretWord property is being printed out to the user for development purposes.
 - Changed isGameOver() method as it was comparing two StringBuffer variables which wasn't working. Now it is comparing the length of alpabets in knownSoFar to secretWord property.
 - Tested the class by trying wrong 6 times, using invalid characters and by typing all the correct characters.
