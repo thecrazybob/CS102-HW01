@@ -12,3 +12,6 @@ Should be "working"
 - Refactored the code and comments (specifically focused on harmony throughout the code - code and comment styling)
 - Go through the code in both classes and see if anything is missing.
 - Fix and errors reported by the IDE.
+- Changed the "chooseSecretWord()" method to private
+- The tryThis() method was comparing lowercase alphabets to uppercase so I matched the cases as well
+- Implemented check inside tryThis() method for isGameOver()

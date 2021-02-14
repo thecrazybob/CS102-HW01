@@ -34,6 +34,7 @@ public class HangmanTester {
             do {
 
                 // Displays the information about the secret word and letters
+                System.out.println("(dev only) actual word: " + hangmanGame.secretWord);
                 System.out.println("The word so far: " + hangmanGame.getKnownSoFar());
                 System.out.println("All letters: " + hangmanGame.getAllLetters());
                 System.out.println("Used letters: " + hangmanGame.getUsedLetters());
@@ -55,14 +56,20 @@ public class HangmanTester {
                     count++;
                 }
                 
-                System.out.println(); // for the program to look cleaner
+                System.out.println();
                 
                 // Reports the result of the guess
                 letterFound = hangmanGame.tryThis(letter);
-                if (letterFound == 0) {
+
+                if (letterFound == -2) {
                     System.out.println("You have guessed wrong.");
                     System.out.println("You have " + (hangmanGame.getMaxAllowedIncorrectTries() - hangmanGame.getNumOfIncorrectTries()) + " tries left.");
                 }
+                
+                else if (letterFound == -3) {
+                    break;
+                }
+                
                 else {
                     System.out.println("'" + letter + "' has been found " + letterFound + " times.");
                 }
@@ -79,14 +86,12 @@ public class HangmanTester {
                 System.out.println("You could NOT guess the word correctly.");
                 System.out.println("Only I am worthy of knowing the word!");
                 System.out.println("I will never tell the word to you...");
-                // The word cannot be given to the user as it is a private property (StringBuffer) without a getter method.
 
             }
 
             else {
 
-                System.out.println("Congrats!!! You won!!");
-                System.out.println("Yess!! You are right! The word is: " + hangmanGame.getKnownSoFar());
+                System.out.println("Congratulations! You won! The word is: " + hangmanGame.secretWord);
 
             }
             
@@ -102,7 +107,7 @@ public class HangmanTester {
             if (playAgain.equalsIgnoreCase("N")) {
                 play = false;
             }
-            
+
         }
             
     	System.out.println("That was fun. Can't wait for the next time!!");

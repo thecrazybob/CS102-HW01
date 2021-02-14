@@ -1,7 +1,7 @@
 public class Hangman {
 
     // properties
-    public String secretWord;
+    public StringBuffer secretWord;
     public StringBuffer allLetters;
     public StringBuffer usedLetters;
     public int numberOfIncorrectTries;
@@ -32,46 +32,61 @@ public class Hangman {
      * Checks if a letter is in the secretWord and adds it to "usedLetters".
      * If it is in secretWord, update knownSoFar with the discovered letter.
      * @param letter the guessed letter
-     * @return number of occurrences of letter in secretWord
+     * @return number of occurrences of letter in secretWord or the responseCode
+     * -1 Invalid
+     * -2 Used
+     * -3 Game over / lost
      */
     public int tryThis(char letter) {
 
         int count;
+        int responseCode = 0;
         
+        // -1 INVALID CHARACTER
         // A character that is not in allLetters is invalid.
         if (allLetters.indexOf(String.valueOf(letter)) == -1) {
-            return 0;
-        }
-        
-        // It is assumed that the main method will prevent the user from trying
-        // a used letter. However, if a letter was already used, the method
-        // will not stop but it will not change any of the properties.
-        if (usedLetters.indexOf(String.valueOf(letter)) == -1) {
-            usedLetters.append(letter);
-        }
-        
-        count = 0;
-        for (int i = 0; i < secretWord.length(); i++) {
-            if (secretWord.charAt(i) == letter) {
-                // Replace the blank letters with the correct letter.
-                // knownSoFar is assumed to have the same length as secretWord.
-                knownSoFar.replace(i, i + 1, String.valueOf(letter));
-                count++;
-            }
-        }
-        
-        if (count == 0) {
-            numberOfIncorrectTries++;
+            responseCode = -1;
         }
 
-        return count;
+        // -2 USED CHARACTER
+        if (usedLetters.indexOf(String.valueOf(letter)) == -1) {
+            usedLetters.append(letter);
+            responseCode = -2;
+        }
+
+        // -3 GAME OVER
+        if (isGameOver()) {
+            responseCode = -3;
+        }
+
+        count = 0;
+
+        if (responseCode != -3) {
+
+            for (int i = 0; i < secretWord.length(); i++) {
+                if (secretWord.toString().toUpperCase().charAt(i) == letter) {
+                    // Replace the blank letters with the correct letter.
+                    // knownSoFar is assumed to have the same length as secretWord.
+                    knownSoFar.replace(i, i + 1, String.valueOf(letter));
+                    count++;
+                }
+            }
+
+            if (count == 0) {
+                numberOfIncorrectTries++;
+            }
+        
+        }
+
+        return count == 0 ? responseCode : count;
+
     }
 
     /**
      * Chooses a random word from the list
      * @return the chosen word
      */
-    public String chooseSecretWord() {
+    private String chooseSecretWord() {
 
         // Some random words
         String[] words = { "bird", "cat", "computer", "java", "david" };
@@ -85,7 +100,7 @@ public class Hangman {
         chosenWord = words[index];
 
         // Assign the word to the global property
-        this.secretWord = chosenWord;
+        this.secretWord = new StringBuffer(chosenWord);
 
         return chosenWord;
 
@@ -148,7 +163,7 @@ public class Hangman {
      * @return shows if the game is over or not.
      */
     public boolean isGameOver () {
-        return hasLost() || (allLetters == usedLetters);
+        return hasLost() || (knownSoFar.length() == secretWord.length());
     }
 
 }
