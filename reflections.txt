@@ -15,3 +15,5 @@ Should be "working"
 - Changed the "chooseSecretWord()" method to private
 - The tryThis() method was comparing lowercase alphabets to uppercase so I matched the cases as well
 - Implemented check inside tryThis() method for isGameOver()
+- Changed isGameOver() method as it was comparing two StringBuffer variables which wasn't working. Now it is comparing the length of alpabets in knownSoFar to secretWord property.
+- Tested the class by trying wrong 6 times, using invalid characters and by typing all the correct characters.

@@ -163,7 +163,16 @@ public class Hangman {
      * @return shows if the game is over or not.
      */
     public boolean isGameOver () {
-        return hasLost() || (knownSoFar.length() == secretWord.length());
+        
+        int count = 0;
+
+        for (int i = 0; i < knownSoFar.length(); i++) {
+            if (Character.isLetter(knownSoFar.charAt(i)))
+            count++;
+        }
+
+        return hasLost() || (count == secretWord.length());
+    
     }
 
 }
